@@ -1,0 +1,19 @@
+#nav-title {
+    font-size: 16pt;
+    font-weight: 700;
+}
+
+.dropshadow {
+    -webkit-box-shadow: 0 2px 4px -4px black;
+    -moz-box-shadow: 0 2px 4px -4px black;
+    box-shadow: 0 2px 4px -4px black;
+}
+
+.MuiSvgIcon-root {
+    color: grey;
+}
+
+.MuiSvgIcon-root:hover {
+    cursor: pointer;
+    color: black;
+}
