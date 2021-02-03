@@ -17,3 +17,17 @@
     cursor: pointer;
     color: black;
 }
+
+.link-click {
+    color: black;
+    text-decoration: none;
+}
+
+.link-click:hover {
+    background: rgba(209,209,209,0.3);
+    color: grey;
+}
+
+.link-click:active {
+
+}

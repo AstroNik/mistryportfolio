@@ -1,5 +1,5 @@
 .max-container {
-    height: calc(100vh - (58.5px + 56px + 58.5px));
+    height: calc(100vh - (58.5px + 56px + 28.25px));
     overflow-x: hidden;
     position: relative;
 }
@@ -8,7 +8,7 @@
     padding: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    grid-auto-rows: 1fr;
+    grid-auto-rows: 250px;
     grid-gap: 20px;
     align-items: stretch;
 }

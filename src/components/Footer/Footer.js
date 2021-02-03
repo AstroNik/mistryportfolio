@@ -9,7 +9,7 @@ class Footer extends Component {
     render() {
         return (
             <footer>
-                <Navbar className="justify-content-center" fixed="bottom">
+                <Navbar className="justify-content-center uppershadow" fixed="bottom">
                     <Nav className="mr-auto">
                         <Nav.Link href="#linkedin"><LinkedInIcon/></Nav.Link>
                         <Nav.Link href="#instagram"><InstagramIcon/></Nav.Link>

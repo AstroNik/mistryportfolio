@@ -1,0 +1,5 @@
+.uppershadow {
+    -webkit-box-shadow: 0 2px 4px 0 black;
+    -moz-box-shadow: 0 2px 4px 0 black;
+    box-shadow: 0 2px 4px 0 black;
+}
