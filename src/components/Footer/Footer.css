@@ -3,3 +3,12 @@
     -moz-box-shadow: 0 2px 4px 0 black;
     box-shadow: 0 2px 4px 0 black;
 }
+
+.cults {
+    filter: invert(54%) sepia(0%) saturate(0%) hue-rotate(1deg) brightness(93%) contrast(84%);
+}
+
+.cults:hover {
+    cursor: pointer;
+    filter: brightness(0%);
+}

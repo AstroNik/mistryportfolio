@@ -13,11 +13,12 @@ class Navigation extends Component {
         return (
             <header>
                 <Navbar className="justify-content-center pb-0" sticky="top">
-                    <Navbar.Brand id="nav-title" href="#home">Mistry Design</Navbar.Brand>
+                    <Navbar.Brand id="nav-title" href="/">Mistry Design</Navbar.Brand>
                 </Navbar>
                 <Navbar className="dropshadow text-center pt-0" sticky="top">
                     <NavTab exact to="/" className="w-50 link-click">Projects</NavTab>
                     <NavTab to="/about" className="w-50 link-click">About</NavTab>
+                    <NavTab to="/addProject" className="w-50 link-click">Add Projects</NavTab>
                 </Navbar>
             </header>
         );

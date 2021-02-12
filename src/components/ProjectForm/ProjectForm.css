@@ -1,0 +1,29 @@
+.form-container {
+
+}
+
+.form {
+    background-color: #e0dedf;
+    width: 50vw;
+    padding: 15px;
+    text-align: left;
+}
+
+.form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.form li {
+    display: block;
+    /*padding: 9px;*/
+    border: 1px solid #DDDDDD;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+.form textarea {
+    resize: none;
+}
+

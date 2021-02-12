@@ -2,15 +2,14 @@ import axios from 'axios';
 
 export const addProject = (project) => {
     return (dispatch) => {
-        axios.post("http://localhost:8080/api/addProject", {
-            project: project
-        }, {
-            header: {
-                'Content-Type': 'application/json'
+        axios.post("http://localhost:8080/api/addProject", project,{
+            headers: {
+                "Content-Type": "multipart/form-data",
             }
-        }).then(() => {
-            dispatch({type: 'SUCCESS_ADD_PROJECT'})
-        }).catch((err) => {
+        })
+            .then(() => {
+                dispatch({type: 'SUCCESS_ADD_PROJECT'})
+            }).catch((err) => {
             dispatch({type: 'FAILED_ADD_PROJECT', err: err})
         })
     }
