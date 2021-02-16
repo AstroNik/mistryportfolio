@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './ProjectForm.css';
 import {addProject} from "../../store/Actions/ProjectActions";
 import {connect} from 'react-redux'
+import {Redirect} from "react-router";
 
 class ProjectForm extends Component {
     state = {
@@ -73,6 +74,14 @@ class ProjectForm extends Component {
     }
 
     render() {
+        // const {auth} = this.props;
+        //
+        // if (!auth.uid) {
+        //     return (
+        //         <Redirect from="/addProject" to="/"/>
+        //     )
+        // }
+
         return (
             <section className="max-container">
                 <div className="text-center p-3 w-100">
@@ -88,27 +97,28 @@ class ProjectForm extends Component {
                                     <span> Project Name </span>
                                 </li>
                                 <li>
-                                    <label>Banner Image</label>
-                                    <br/>
-                                    <input placeholder="Banner Image" type="file" id="bannerImage" name="bannerImage"
-                                           onChange={this.selectFiles}/>
-                                    <br/>
-                                    <span> Image to showcase on main page </span>
+                                    <label> Banner Image </label>
+                                    <div className="button-wrap">
+                                        <label className="button" htmlFor="bannerImage">Upload</label>
+                                        <input type="file" id="bannerImage" name="bannerImage"
+                                               onChange={this.selectFiles}/>
+                                    </div>
                                 </li>
                                 <li>
                                     <label>Description</label>
                                     <br/>
-                                    <textarea id="description" name="description" cols="46" rows="5" onChange={this.handleChange}/>
+                                    <textarea id="description" name="description" cols="46" rows="5"
+                                              onChange={this.handleChange}/>
                                     <br/>
                                     <span> Project Description </span>
                                 </li>
                                 <li>
                                     <label> Images / Videos </label>
-                                    <br/>
-                                    <input placeholder="Other Files" type="file" multiple="multiple" id="files"
-                                           onChange={this.selectFiles} name="files"/>
-                                    <br/>
-                                    <span> For slideshow </span>
+                                    <div className="button-wrap">
+                                        <label className="button" htmlFor="files"> Upload </label>
+                                        <input type="file" multiple="multiple" id="files"
+                                               onChange={this.selectFiles} name="files"/>
+                                    </div>
                                 </li>
                                 <li>
                                     <input type="radio" id="tDBoolTrue" name="tDBool" value={true}
@@ -121,12 +131,12 @@ class ProjectForm extends Component {
                                 </li>
                                 <li>
                                     <label> 3D Files </label>
-                                    <br/>
-                                    <input placeholder="3D File" type="file" id="tDFiles" name="tDFiles"
-                                           disabled={this.state.dis}
-                                           onChange={this.selectFiles} required={!this.state.dis}/>
-                                    <br/>
-                                    <span> Any 3D file related to the project </span>
+                                    <div className="button-wrap">
+                                        <label className="button" htmlFor="tDFiles"> Upload </label>
+                                        <input type="file" id="tDFiles" name="tDFiles"
+                                               disabled={this.state.dis}
+                                               onChange={this.selectFiles} required={!this.state.dis}/>
+                                    </div>
                                 </li>
                                 <li>
                                     <label> Page Format </label>

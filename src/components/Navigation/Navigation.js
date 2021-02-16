@@ -12,7 +12,7 @@ class Navigation extends Component {
     render() {
         return (
             <header>
-                <Navbar className="justify-content-center pb-0" sticky="top">
+                <Navbar className="justify-content-center pb-0 text-center" sticky="top">
                     <Navbar.Brand id="nav-title" href="/">Mistry Design</Navbar.Brand>
                 </Navbar>
                 <Navbar className="dropshadow text-center pt-0" sticky="top">

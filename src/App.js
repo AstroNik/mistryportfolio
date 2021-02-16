@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import ProjectForm from "./components/ProjectForm/ProjectForm"
+import Login from "./components/Login/Login"
 
 class App extends Component {
     render() {
@@ -19,6 +20,7 @@ class App extends Component {
                         {/* id | projectName */}
                         <Route path='/project/:id' component={Projects}/>
                         <Route path='/addProject' component={ProjectForm}/>
+                        <Route path='/login' component={Login}/>
                     </Switch>
                     <Footer/>
                 </BrowserRouter>
