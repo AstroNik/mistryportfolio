@@ -4,11 +4,11 @@ const initState = {
 
 const ProjectReducer = (state = initState, action) => {
     switch (action.type) {
-        case 'Get_Projects':
+        case 'SUCCESS_GET_PROJECTS':
             console.log("Projects Retrieved");
             return {
                 ...state,
-                projects: null
+                projects: action.projects
             }
         default:
             return state;

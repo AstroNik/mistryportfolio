@@ -4,12 +4,40 @@ import Home from './components/Home/Home';
 import Navigation from './components/Navigation/Navigation';
 import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
 import ProjectForm from "./components/ProjectForm/ProjectForm"
 import Login from "./components/Login/Login"
+import LayoutImage from "./components/Layout/LayoutImage";
+import LayoutThreeD from "./components/Layout/LayoutThreeD";
+import {getProjects} from "./store/Actions/ProjectActions";
+import {connect} from 'react-redux'
 
 class App extends Component {
+    state = {
+        loading: true
+    }
+
+    componentDidMount() {
+        setTimeout(function() {
+            this.props.getProjects();
+        }.bind(this), 1000)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.projects !== this.props.projects) {
+            this.setState({
+                loading: false
+            })
+            console.log(this.props.projects)
+        }
+    }
+
     render() {
+        const {loading} = this.state;
+
+        if (loading) { // if your component doesn't have to wait for async data, remove this block
+            return null; // render null when app is not ready
+        }
+
         return (
             <div className="App">
                 <BrowserRouter>
@@ -17,10 +45,10 @@ class App extends Component {
                     <Switch>
                         <Route exact path='/' component={Home}/>
                         <Route path='/about' component={About}/>
-                        {/* id | projectName */}
-                        <Route path='/project/:id' component={Projects}/>
                         <Route path='/addProject' component={ProjectForm}/>
                         <Route path='/login' component={Login}/>
+                        <Route path='/project/:id' component={LayoutImage}/>
+                        <Route path='/project/threeD/:id' component={LayoutThreeD}/>
                     </Switch>
                     <Footer/>
                 </BrowserRouter>
@@ -29,4 +57,17 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+    return {
+        projects: state.projects.projects
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getProjects: () => dispatch(getProjects())
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -2,18 +2,23 @@ import React, {Component} from 'react';
 import './ProjectForm.css';
 import {addProject} from "../../store/Actions/ProjectActions";
 import {connect} from 'react-redux'
-import {Redirect} from "react-router";
+import bsCustomFileInput from 'bs-custom-file-input';
+import {Redirect} from 'react-router-dom';
 
 class ProjectForm extends Component {
     state = {
         title: "",
-        bannerImage: undefined,
-        files: undefined,
+        bannerImage: null,
+        files: null,
         description: "",
         tDBool: false,
-        tDFiles: undefined,
-        layoutSelection: "1",
+        tDFiles: null,
+        layout: "1",
         dis: true,
+    }
+
+    componentDidMount() {
+        bsCustomFileInput.init()
     }
 
     handleChange = (e) => {
@@ -30,7 +35,6 @@ class ProjectForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         const formData = new FormData();
         formData.append("title", this.state.title);
 
@@ -40,11 +44,15 @@ class ProjectForm extends Component {
             formData.append("files", this.state.files[i]);
         }
 
-        formData.append("files", this.state.tDFiles[0]);
+        if(this.state.tDFiles != null ) {
+            formData.append("files", this.state.tDFiles[0]);
+        } else {
+            formData.append("tDFiles", null);
+        }
 
         formData.append("description", this.state.description);
         formData.append("tDBool", this.state.tDBool);
-        formData.append("layout", this.state.layoutSelection);
+        formData.append("layout", this.state.layout);
 
 
         this.props.addProject(formData);
@@ -54,21 +62,20 @@ class ProjectForm extends Component {
         if (this.state !== prevState) {
             if (this.state.tDBool === "false") {
                 this.setState({
-                    tDBool: true
+                    tDBool: true,
+                    dis: false,
+                    layout: "2"
                 })
-                this.setState({
-                    dis: false
-                })
-                document.getElementById("layoutSelection2").checked = true;
+                document.getElementById("layout2").checked = true;
             }
             if (this.state.tDBool === "true") {
                 this.setState({
-                    tDBool: false
+                    tDBool: false,
+                    dis: true,
+                    tDFiles: null,
+                    layout: "1"
                 })
-                this.setState({
-                    dis: true
-                })
-                document.getElementById("layoutSelection1").checked = true;
+                document.getElementById("layout1").checked = true;
             }
         }
     }
@@ -84,78 +91,93 @@ class ProjectForm extends Component {
 
         return (
             <section className="max-container">
-                <div className="text-center p-3 w-100">
-                    <div className="form-container">
-                        <h3> Add Project </h3>
-                        <form className="form">
-                            <ul>
-                                <li>
-                                    <label> Project Name </label>
-                                    <br/>
-                                    <input type="text" id="title" name="title" onChange={this.handleChange}/>
-                                    <br/>
-                                    <span> Project Name </span>
-                                </li>
-                                <li>
-                                    <label> Banner Image </label>
-                                    <div className="button-wrap">
-                                        <label className="button" htmlFor="bannerImage">Upload</label>
-                                        <input type="file" id="bannerImage" name="bannerImage"
-                                               onChange={this.selectFiles}/>
-                                    </div>
-                                </li>
-                                <li>
-                                    <label>Description</label>
-                                    <br/>
-                                    <textarea id="description" name="description" cols="46" rows="5"
-                                              onChange={this.handleChange}/>
-                                    <br/>
-                                    <span> Project Description </span>
-                                </li>
-                                <li>
-                                    <label> Images / Videos </label>
-                                    <div className="button-wrap">
-                                        <label className="button" htmlFor="files"> Upload </label>
-                                        <input type="file" multiple="multiple" id="files"
-                                               onChange={this.selectFiles} name="files"/>
-                                    </div>
-                                </li>
-                                <li>
-                                    <input type="radio" id="tDBoolTrue" name="tDBool" value={true}
-                                           onChange={this.handleChange}
-                                           defaultChecked/>
-                                    <label htmlFor="3dBool"> No 3D File </label>
-                                    <input type="radio" id="tDBoolFalse" name="tDBool" value={false}
-                                           onChange={this.handleChange}/>
-                                    <label htmlFor="3dBool"> I Have a 3D File </label>
-                                </li>
-                                <li>
-                                    <label> 3D Files </label>
-                                    <div className="button-wrap">
-                                        <label className="button" htmlFor="tDFiles"> Upload </label>
-                                        <input type="file" id="tDFiles" name="tDFiles"
-                                               disabled={this.state.dis}
-                                               onChange={this.selectFiles} required={!this.state.dis}/>
-                                    </div>
-                                </li>
-                                <li>
-                                    <label> Page Format </label>
-                                    <br/>
-                                    <input type="radio" id="layoutSelection1" name="layoutSelection" value="1"
-                                           onChange={this.handleChange} disabled={!this.state.dis} defaultChecked/>
-                                    <label htmlFor="layoutSelection"> Image 1 </label>
-                                    <input type="radio" id="layoutSelection2" name="layoutSelection" value="2"
-                                           onChange={this.handleChange} disabled={this.state.dis}/>
-                                    <label htmlFor="layoutSelection"> Image 2 </label>
-                                    <br/>
-                                    <span> Select a layout </span>
-                                </li>
-                                <li>
-                                    <button onClick={this.handleSubmit}> Add Project</button>
-                                </li>
-                            </ul>
-                        </form>
-                    </div>
+
+                <div className="form-container">
+                    <form>
+                        <div className="w-100">
+                            <div className="text-center">
+                                <h2> Add Project </h2>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <input className="form-control" type="text" id="title" name="title"
+                                   onChange={this.handleChange} placeholder="Project Name"/>
+                        </div>
+
+                        <div className="input-group">
+                            <div className="custom-file">
+                                <input type="file" id="bannerImage" name="bannerImage" className="custom-file-input"
+                                       onChange={this.selectFiles}/>
+                                <label className="custom-file-label" htmlFor="bannerImage"> Upload Display
+                                    Image </label>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div className="form-group">
+                                <textarea id="description" className="form-control" name="description" cols="46"
+                                          rows="5"
+                                          onChange={this.handleChange} placeholder="Project Description"/>
+                        </div>
+
+                        <div className="input-group">
+                            <div className="custom-file">
+                                <input type="file" multiple="multiple" id="files"
+                                       onChange={this.selectFiles} name="files" className="custom-file-input"/>
+                                <label className="custom-file-label overflow-hidden" htmlFor="files"> Upload Images / Videos of
+                                    Project </label>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div className="form-group">
+                            <div className="form-check form-check-inline">
+                                <input type="radio" id="tDBoolTrue" name="tDBool" value={true}
+                                       onChange={this.handleChange}
+                                       defaultChecked className="form-check-input"/>
+                                <label htmlFor="3dBool" className="form-check-label"> No 3D File </label>
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input type="radio" id="tDBoolFalse" name="tDBool" value={false}
+                                       onChange={this.handleChange} className="form-check-input"/>
+                                <label htmlFor="3dBool" className="form-check-label"> I Have a 3D File </label>
+                            </div>
+                        </div>
+
+                        <div className="input-group">
+                            <div className="custom-file">
+
+                                <input type="file" id="tDFiles" name="tDFiles" className="custom-file-input"
+                                       disabled={this.state.dis}
+                                       onChange={this.selectFiles} required={!this.state.dis}/>
+                                <label className="custom-file-label" htmlFor="tDFiles"> Upload STL File </label>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div className="form-group">
+                            <div className="form-check form-check-inline">
+                                <input type="radio" id="layout1" name="layout" value="1"
+                                       className="form-check-input"
+                                       onChange={this.handleChange} disabled={!this.state.dis} defaultChecked/>
+                                <label htmlFor="layout" className="form-check-label"> Layout With Image </label>
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input type="radio" id="layout2" name="layout" value="2"
+                                       className="form-check-input"
+                                       onChange={this.handleChange} disabled={this.state.dis}/>
+                                <label htmlFor="layout" className="form-check-label"> Layout With 3D Interaction </label>
+                            </div>
+                        </div>
+
+                        <button onClick={this.handleSubmit} className="btn btn-primary w-100"> Add Project</button>
+
+                    </form>
                 </div>
             </section>
         )

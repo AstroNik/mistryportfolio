@@ -26,6 +26,7 @@
 .link-click:hover {
     background: rgba(209,209,209,0.3);
     color: grey;
+    text-decoration: none;
 }
 
 .link-click:active {
