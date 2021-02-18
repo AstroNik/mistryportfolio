@@ -1,6 +1,5 @@
 import React from 'react';
 import './ClickableImage.css';
-import img from './Screenshot_1.png'
 import {Link} from "react-router-dom";
 
 const ClickableImage = ({projects}) => {
@@ -8,16 +7,14 @@ const ClickableImage = ({projects}) => {
         if(project.layout === 1){
             return (
                 <Link to={'/project/' + project.projectId} key={index}>
-                    <img
-                        src={project.bannerImage}
-                        alt="img" className="clickImage"/>
+                    <img src={project.banner} alt="img" className="clickImage"/>
                 </Link>
             );
         } else {
             return (
                 <Link to={'/project/threeD/' + project.projectId} key={index}>
                     <img
-                        src={img}
+                        src={project.banner}
                         alt="img" className="clickImage"/>
                 </Link>
             );
@@ -25,11 +22,7 @@ const ClickableImage = ({projects}) => {
     })
 
     return (
-        <Link to={'/project/threeD/' + 1} key={1}>
-            <img
-                src={img}
-                alt="img" className="clickImage"/>
-        </Link>
+        mappedData
     );
 }
 
