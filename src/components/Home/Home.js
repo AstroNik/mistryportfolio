@@ -10,8 +10,10 @@ class Home extends Component {
 
         return (
             <section className="max-container">
-                <div className="grid">
-                    <ClickableImage projects={projects}/>
+                <div className="home-layout">
+                    <div className="grid pl-4 pr-4">
+                        <ClickableImage projects={projects}/>
+                    </div>
                 </div>
             </section>
         );

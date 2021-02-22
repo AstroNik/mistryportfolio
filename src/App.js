@@ -47,7 +47,7 @@ class App extends Component {
                         <Route path='/addProject' component={ProjectForm}/>
                         <Route path='/login' component={Login}/>
                         <Route path='/project/:id' component={LayoutImage}/>
-                        <Route path='/project/threeD/:id' component={LayoutThreeD}/>
+                        <Route path='/project3D/:id' component={LayoutThreeD}/>
                     </Switch>
                     <Footer/>
                 </BrowserRouter>

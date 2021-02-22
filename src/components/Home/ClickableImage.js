@@ -12,7 +12,7 @@ const ClickableImage = ({projects}) => {
             );
         } else {
             return (
-                <Link to={'/project/threeD/' + project.projectId} key={index}>
+                <Link to={'/project3D/' + project.projectId} key={index}>
                     <img
                         src={project.banner}
                         alt="img" className="clickImage"/>

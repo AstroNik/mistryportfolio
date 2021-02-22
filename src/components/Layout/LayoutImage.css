@@ -1,14 +1,21 @@
+.layout-content {
+    width: 80%;
+    margin: 0 auto;
+    /*height: 100vh;*/
+    background-color: grey;
+}
+
 .layout-grid {
     white-space: nowrap;
     max-width: 100%;
-    height: 60%;
+    /*height: 60%;*/
 }
 
 .content-div {
     width: 50%;
     display: inline-block;
     text-align: justify;
-    /*vertical-align: middle;*/
+    vertical-align: middle;
     white-space: normal;
 }
 
@@ -17,11 +24,36 @@
     max-height:95%;
 }
 
-@media screen and (max-width: 480px) {
+.slideshow {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.video-wrapper video {
+    max-width: 100%;
+}
+
+@media screen and (max-width: 999px){
     .content-div {
         display: block;
         width: 100%;
         margin: 0 auto;
     }
 
+    .content-div img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .slideshow {
+        width: 100%;
+        margin: 0 auto;
+    }
 }
+@media screen and (max-width: 667px) {
+    .layout-content {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width: 500px){}
