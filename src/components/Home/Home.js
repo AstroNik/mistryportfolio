@@ -4,10 +4,8 @@ import ClickableImage from "./ClickableImage";
 import {connect} from 'react-redux';
 
 class Home extends Component {
-
     render() {
         const {projects} = this.props;
-
         return (
             <section className="max-container">
                 <div className="home-layout">
@@ -26,4 +24,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps,null)(Home);
+export default connect(mapStateToProps, null)(Home);

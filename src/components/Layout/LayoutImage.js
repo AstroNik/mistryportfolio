@@ -24,6 +24,7 @@ class LayoutImage extends React.Component {
 
                 return (
                     {
+                        original: image,
                         embedUrl: image,
                         renderItem: this.renderVideo.bind(this)
                     }

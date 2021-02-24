@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ImageGallery from "react-image-gallery";
 import {connect} from 'react-redux';
+import {Model} from './Model'
+import {Canvas} from "react-three-fiber";
+import {OrbitControls} from "@react-three/drei";
 
 class LayoutThreeD extends React.Component {
 
@@ -22,6 +25,7 @@ class LayoutThreeD extends React.Component {
 
                 return (
                     {
+                        original: image,
                         embedUrl: image,
                         renderItem: this.renderVideo.bind(this)
                     }
@@ -39,12 +43,17 @@ class LayoutThreeD extends React.Component {
 
         return (
             <section className="max-container">
-                <div className="p-4">
+                <div className="layout-content p-4">
                     <h2> {project.title} </h2>
 
                     <div className="layout-grid">
                         <div className="content-div">
-
+                            <Canvas camera={{position: [0, 10, 100]}}>
+                                <Suspense fallback={null}>
+                                    <Model url={"./book.stl"}/>
+                                </Suspense>
+                                <OrbitControls/>
+                            </Canvas>
                         </div>
                         <div className="content-div">
                             {project.description}
@@ -74,4 +83,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps,null)(LayoutThreeD);
+export default connect(mapStateToProps, null)(LayoutThreeD);
