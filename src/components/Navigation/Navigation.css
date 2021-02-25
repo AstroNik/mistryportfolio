@@ -4,9 +4,18 @@
 }
 
 .dropshadow {
-    -webkit-box-shadow: 0 2px 4px -4px black;
-    -moz-box-shadow: 0 2px 4px -4px black;
-    box-shadow: 0 2px 4px -4px black;
+    -webkit-box-shadow: 0 -8px 20px 0 black;
+    -moz-box-shadow: 0 -8px 20px 0 black;
+    box-shadow: 0 -8px 20px 0 black;
+    position: sticky;
+    top:0;
+    z-index: 1020;
+}
+
+.navigation a{
+    text-align: center;
+    vertical-align: middle;
+    line-height: 28px;
 }
 
 .MuiSvgIcon-root {
@@ -21,6 +30,7 @@
 .link-click {
     color: black;
     text-decoration: none;
+    height: 29px;
 }
 
 .link-click:hover {

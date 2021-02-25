@@ -49,7 +49,9 @@ class LayoutImage extends React.Component {
                             <img src={project.banner} alt="img"/>
                         </div>
                         <div className="content-div">
-                            {project.description}
+                            <p>
+                                {project.description}
+                            </p>
                         </div>
                     </div>
                     <div className="pt-3 slideshow">

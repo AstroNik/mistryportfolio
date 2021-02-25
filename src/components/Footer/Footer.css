@@ -1,7 +1,8 @@
 .uppershadow {
-    -webkit-box-shadow: 0 2px 4px 0 black;
-    -moz-box-shadow: 0 2px 4px 0 black;
-    box-shadow: 0 2px 4px 0 black;
+    -webkit-box-shadow: 0 8px 20px 0 black;
+    -moz-box-shadow: 0 8px 20px 0 black;
+    box-shadow: 0 8px 20px 0 black;
+    height: 54px;
 }
 
 .cults {

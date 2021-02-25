@@ -1,9 +1,9 @@
 import React, {Suspense} from 'react';
 import ImageGallery from "react-image-gallery";
 import {connect} from 'react-redux';
-import {Model} from './Model'
 import {Canvas} from "react-three-fiber";
-import {OrbitControls} from "@react-three/drei";
+import {OrbitControls, TransformControls} from "@react-three/drei";
+import {Model} from './Model'
 
 class LayoutThreeD extends React.Component {
 
@@ -40,7 +40,6 @@ class LayoutThreeD extends React.Component {
 
         });
 
-
         return (
             <section className="max-container">
                 <div className="layout-content p-4">
@@ -48,18 +47,23 @@ class LayoutThreeD extends React.Component {
 
                     <div className="layout-grid">
                         <div className="content-div">
-                            <Canvas camera={{position: [0, 10, 100]}}>
+                            <Canvas camera={{position: [0, 0, 250]}} style={{height:"500px", backgroundColor: "rgb(229, 229, 229)"}}>
                                 <Suspense fallback={null}>
-                                    <Model url={"./book.stl"}/>
+                                    <Model url={project.tDFiles}/>
                                 </Suspense>
                                 <OrbitControls/>
+                                <TransformControls/>
                             </Canvas>
                         </div>
                         <div className="content-div">
-                            {project.description}
+                            <div className="content-text-div">
+                                <div className="content-text">
+                                    {project.description}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="pt-3 slideshow">
+                    <div className="slideshow">
                         <ImageGallery
                             items={mappedImages}
                             showPlayButton={false}
