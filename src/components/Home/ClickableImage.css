@@ -1,4 +1,8 @@
-.clickImage:hover {
+#img-wrapper {
+    position:relative;
+}
+
+.clickImage:hover{
     cursor: pointer;
     opacity: 0.5;
 }
@@ -7,4 +11,32 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.div-on-img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: black;
+    visibility: hidden;
+}
+
+#img-wrapper:hover .clickImage{
+    -webkit-transition: opacity .20s ease-in-out;
+    -moz-transition: opacity .20s ease-in-out;
+    -ms-transition: opacity .20s ease-in-out;
+    -o-transition: opacity .20s ease-in-out;
+    transition: opacity .20s ease-in-out;
+    opacity: 0.5;
+}
+
+#img-wrapper:hover .div-on-img {
+    visibility: visible;
+    -webkit-transition: visibility .20s ease-in-out;
+    -moz-transition: visibility .20s ease-in-out;
+    -ms-transition: visibility .20s ease-in-out;
+    -o-transition: visibility .20s ease-in-out;
+    transition: visibility .20s ease-in-out;
 }

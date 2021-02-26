@@ -50,9 +50,9 @@ class LayoutImage extends React.Component {
                     <div className="layout-grid">
                         <div className="content-div">
                             {project.layout === 1 ?
-                                <div className="content-text">
+                                // <div className="content-text">
                                     <img src={project.banner} alt="img"/>
-                                </div>
+                                // </div>
                                 :
                                 <Canvas camera={{position: [0, 0, 250]}}
                                         style={{height: "500px", backgroundColor: "rgb(229, 229, 229)"}}>

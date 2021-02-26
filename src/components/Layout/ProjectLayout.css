@@ -24,13 +24,10 @@
     max-height:95%;
 }
 
-.content-text-div {
-    padding-left: 20px;
-}
-
 .content-text {
     padding: 30px;
     font-size: 15pt;
+    text-align: justify;
 }
 
 .slideshow {
@@ -74,14 +71,21 @@
         padding-top: 0;
     }
 
-    .content-text-div {
-        padding-left: 0 ;
-    }
-
     .content-text {
         padding: 30px;
+        text-align: justify;
+        font-size: 14pt;
     }
 }
+
+@media screen and (max-width: 1000px){
+    .content-text {
+        padding: 30px;
+        text-align: justify;
+        font-size: 12pt;
+    }
+}
+
 @media screen and (max-width: 667px) {
     .layout-content {
         width: 100%;
@@ -91,6 +95,8 @@
 
     .content-text {
         padding: 30px 0 30px 0;
+        text-align: justify;
+        font-size: 12pt;
     }
 }
-@media screen and (max-width: 500px){}
+

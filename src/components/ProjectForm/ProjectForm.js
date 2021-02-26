@@ -57,7 +57,7 @@ class ProjectForm extends Component {
 
         this.props.addProject(formData);
 
-        this.props.history.push('/');
+        // this.props.history.push('/');
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -79,6 +79,9 @@ class ProjectForm extends Component {
                 })
                 document.getElementById("layout1").checked = true;
             }
+        }
+        if(prevProps.status !== this.props.status){
+            this.props.history.push('/');
         }
     }
 
