@@ -126,7 +126,7 @@
     clear: left;
 }
 
-@media screen and (min-width: 999px) and (max-width: 1400px) {
+@media screen and (min-width: 1100px) and (max-width: 1400px) {
     .about-layout {
         white-space: nowrap;
         max-width: 80%;
@@ -141,9 +141,9 @@
 
 }
 
-@media screen and (max-width: 998px) {
+@media screen and (max-width: 1099px) {
     .about-layout {
-        max-width: 80%;
+        max-width: 70%;
         height: 100%;
     }
 

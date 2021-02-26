@@ -50,9 +50,12 @@ class LayoutImage extends React.Component {
                     <div className="layout-grid">
                         <div className="content-div">
                             {project.layout === 1 ?
-                                <img src={project.banner} alt="img"/>
+                                <div className="content-text">
+                                    <img src={project.banner} alt="img"/>
+                                </div>
                                 :
-                                <Canvas camera={{position: [0, 0, 250]}} style={{height:"500px", backgroundColor: "rgb(229, 229, 229)"}}>
+                                <Canvas camera={{position: [0, 0, 250]}}
+                                        style={{height: "500px", backgroundColor: "rgb(229, 229, 229)"}}>
                                     <Suspense fallback={null}>
                                         <Model url={project.tDFiles}/>
                                     </Suspense>
@@ -62,10 +65,8 @@ class LayoutImage extends React.Component {
                             }
                         </div>
                         <div className="content-div">
-                            <div className="content-text-div">
-                                <div className="content-text">
-                                    {project.description}
-                                </div>
+                            <div className="content-text">
+                                {project.description}
                             </div>
                         </div>
                     </div>
