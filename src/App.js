@@ -12,30 +12,30 @@ import {getProjects} from "./store/Actions/ProjectActions";
 import {connect} from 'react-redux'
 
 class App extends Component {
-    // state = {
-    //     loading: true
-    // }
-    //
-    // componentDidMount() {
-    //     setTimeout(function() {
-    //         this.props.getProjects();
-    //     }.bind(this), 1000)
-    // }
-    //
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     if (prevProps.projects !== this.props.projects) {
-    //         this.setState({
-    //             loading: false
-    //         })
-    //     }
-    // }
+    state = {
+        loading: true
+    }
+
+    componentDidMount() {
+        setTimeout(function() {
+            this.props.getProjects();
+        }.bind(this), 1000)
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.projects !== this.props.projects) {
+            this.setState({
+                loading: false
+            })
+        }
+    }
 
     render() {
-        // const {loading} = this.state;
-        //
-        // if (loading) { // if your component doesn't have to wait for async data, remove this block
-        //     return null; // render null when app is not ready
-        // }
+        const {loading} = this.state;
+
+        if (loading) { // if your component doesn't have to wait for async data, remove this block
+            return null; // render null when app is not ready
+        }
 
         return (
             <div className="App">

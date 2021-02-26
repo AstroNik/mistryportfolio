@@ -3,7 +3,7 @@ import './ProjectForm.css';
 import {addProject} from "../../store/Actions/ProjectActions";
 import {connect} from 'react-redux'
 import bsCustomFileInput from 'bs-custom-file-input';
-import {Redirect} from 'react-router-dom';
+import {Redirect, withRouter} from 'react-router-dom';
 
 class ProjectForm extends Component {
     state = {
@@ -56,6 +56,8 @@ class ProjectForm extends Component {
 
 
         this.props.addProject(formData);
+
+        this.props.history.push('/');
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -81,13 +83,13 @@ class ProjectForm extends Component {
     }
 
     render() {
-        // const {auth} = this.props;
-        //
-        // if (!auth.uid) {
-        //     return (
-        //         <Redirect from="/addProject" to="/"/>
-        //     )
-        // }
+        const {auth} = this.props;
+
+        if (!auth.uid) {
+            return (
+                <Redirect from="/addProject" to="/"/>
+            )
+        }
 
         return (
             <section className="max-container">
@@ -186,7 +188,8 @@ class ProjectForm extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        status: state.projects.status
     }
 }
 
@@ -196,4 +199,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectForm))

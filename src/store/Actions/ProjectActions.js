@@ -2,13 +2,13 @@ import axios from 'axios';
 
 export const addProject = (project) => {
     return (dispatch) => {
-        axios.post("http://localhost:8080/api/addProject", project,{
+        axios.post(process.env.REACT_APP_LINK + "/api/addProject", project,{
             headers: {
                 "Content-Type": "multipart/form-data",
             }
         })
-            .then(() => {
-                dispatch({type: 'SUCCESS_ADD_PROJECT'})
+            .then((res) => {
+                dispatch({type: 'SUCCESS_ADD_PROJECT', status: res.status})
             }).catch((err) => {
             dispatch({type: 'FAILED_ADD_PROJECT', err: err})
         })
@@ -17,7 +17,7 @@ export const addProject = (project) => {
 
 export const getProjects = () => {
     return (dispatch) => {
-        axios.get("http://localhost:8080/api/getProjects")
+        axios.get(process.env.REACT_APP_LINK  +"/api/getProjects")
             .then(({data}) => {
                 dispatch({type: 'SUCCESS_GET_PROJECTS', projects: data})
             }).catch((err) => {

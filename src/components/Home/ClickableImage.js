@@ -19,7 +19,7 @@ const ClickableImage = ({projects}) => {
                 </Link>
             );
         }
-    })
+    });
 
     return (
         mappedData

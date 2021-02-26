@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.css';
 import {connect} from 'react-redux'
 import {signIn} from "../../store/Actions/AuthActions";
+import {Redirect} from "react-router-dom";
 
 class Login extends React.Component {
     state = {
@@ -18,9 +19,14 @@ class Login extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.signIn(this.state);
+
     }
 
     render() {
+        const {auth} = this.props;
+        if (auth.uid) {
+            return <Redirect to="/"/>
+        }
         return (
             <section className="max-container">
                 <div className="outer">
@@ -51,10 +57,16 @@ class Login extends React.Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         signIn: (credentials) => dispatch(signIn(credentials))
     }
 }
 
-export default connect(null,mapDispatchToProps)(Login);
+export default connect(mapStateToProps,mapDispatchToProps)(Login);

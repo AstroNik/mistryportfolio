@@ -21,7 +21,7 @@ const initState = {
         },
         {
             _id: "67854653452345",
-            banner: "https://cdn.nikhilkapadia.com/mistry/2021-02-17/267521129.png",
+            banner: "https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=689&q=80",
             date: "2021-02-17T20:33:21.822Z",
             description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
             files: [
@@ -55,7 +55,8 @@ const initState = {
             tDFiles: "https://cdn.nikhilkapadia.com/mistry/2021-02-17/Bat_Book_Ring.stl",
             title: "Test Project"
         }
-    ]
+    ],
+    status: 0,
 }
 
 const ProjectReducer = (state = initState, action) => {
@@ -65,6 +66,12 @@ const ProjectReducer = (state = initState, action) => {
             return {
                 ...state,
                 projects: action.projects
+            }
+        case 'SUCCESS_ADD_PROJECT':
+            console.log("Project Added")
+            return {
+                ...state,
+                added: action.status
             }
         default:
             return state;

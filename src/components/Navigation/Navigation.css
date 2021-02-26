@@ -8,11 +8,11 @@
     -moz-box-shadow: 0 -8px 20px 0 black;
     box-shadow: 0 -8px 20px 0 black;
     position: sticky;
-    top:0;
+    top: 0;
     z-index: 1020;
 }
 
-.navigation a{
+.navigation a {
     text-align: center;
     vertical-align: middle;
     line-height: 28px;
@@ -34,11 +34,24 @@
 }
 
 .link-click:hover {
-    background: rgba(209,209,209,0.3);
+    background: rgba(209, 209, 209, 0.3);
     color: grey;
     text-decoration: none;
 }
 
 .link-click:active {
 
+}
+
+.nav-fix {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1020;
+    margin-bottom: 95px;
+    margin-right: 50px;
+}
+
+.icon-color {
+    color: white;
 }
