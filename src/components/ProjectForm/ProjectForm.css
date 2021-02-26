@@ -8,13 +8,19 @@
 
 .form-container form {
     background-color: #f7f7f7;
-    width: 50vw;
+    width: 40vw;
     padding: 15px;
     text-align: left;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 @media screen and (max-width: 999px){
+    .form-container form {
+        width: 75vw;
+    }
+}
+
+@media screen and (max-width: 667px) {
     .form-container form {
         width: 75vw;
     }

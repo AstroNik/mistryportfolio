@@ -43,7 +43,7 @@ class SmallNav extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.auth.uid !== this.props.auth.uid) {
             this.setState({
-                isOpen: !this.state.isOpen
+                isOpen: false
             })
         }
     }

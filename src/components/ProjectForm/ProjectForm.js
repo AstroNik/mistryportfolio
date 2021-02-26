@@ -83,13 +83,13 @@ class ProjectForm extends Component {
     }
 
     render() {
-        const {auth} = this.props;
-
-        if (!auth.uid) {
-            return (
-                <Redirect from="/addProject" to="/"/>
-            )
-        }
+        // const {auth} = this.props;
+        //
+        // if (!auth.uid) {
+        //     return (
+        //         <Redirect from="/addProject" to="/"/>
+        //     )
+        // }
 
         return (
             <section className="max-container">

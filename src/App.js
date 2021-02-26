@@ -6,8 +6,7 @@ import Footer from "./components/Footer/Footer";
 import About from "./components/About/About";
 import ProjectForm from "./components/ProjectForm/ProjectForm"
 import Login from "./components/Login/Login"
-import LayoutImage from "./components/Layout/LayoutImage";
-import LayoutThreeD from "./components/Layout/LayoutThreeD";
+import LayoutImage from "./components/Layout/ProjectLayout";
 import {getProjects} from "./store/Actions/ProjectActions";
 import {connect} from 'react-redux'
 
@@ -47,7 +46,6 @@ class App extends Component {
                         <Route path='/addProject' component={ProjectForm}/>
                         <Route path='/login' component={Login}/>
                         <Route path='/project/:id' component={LayoutImage}/>
-                        <Route path='/project3D/:id' component={LayoutThreeD}/>
                     </Switch>
                     <Footer/>
                 </BrowserRouter>

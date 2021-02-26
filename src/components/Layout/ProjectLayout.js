@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import {connect} from 'react-redux';
-import './LayoutImage.css'
+import './ProjectLayout.css'
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from 'react-image-gallery';
+import {Canvas} from "react-three-fiber";
+import {Model} from "./Model";
+import {OrbitControls, TransformControls} from "@react-three/drei";
 
 class LayoutImage extends React.Component {
 
@@ -46,15 +49,27 @@ class LayoutImage extends React.Component {
 
                     <div className="layout-grid">
                         <div className="content-div">
-                            <img src={project.banner} alt="img"/>
+                            {project.layout === 1 ?
+                                <img src={project.banner} alt="img"/>
+                                :
+                                <Canvas camera={{position: [0, 0, 250]}} style={{height:"500px", backgroundColor: "rgb(229, 229, 229)"}}>
+                                    <Suspense fallback={null}>
+                                        <Model url={project.tDFiles}/>
+                                    </Suspense>
+                                    <OrbitControls/>
+                                    <TransformControls/>
+                                </Canvas>
+                            }
                         </div>
                         <div className="content-div">
-                            <p>
-                                {project.description}
-                            </p>
+                            <div className="content-text-div">
+                                <div className="content-text">
+                                    {project.description}
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div className="pt-3 slideshow">
+                    <div className="slideshow">
                         <ImageGallery
                             items={mappedImages}
                             showPlayButton={false}
