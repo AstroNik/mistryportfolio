@@ -41,27 +41,30 @@ class SmallNav extends React.Component {
                     />
                     {!auth.uid ?
                         <ChildButton
-                            icon={<PersonIcon style={{fontSize: 20}}/>}
+                            icon={<> <PersonIcon style={{fontSize: 20}}/> Login </>}
                             background="#fff"
                             size={40}
                             onClick={() => history.push('/login')}
+                            className="icon-sizing"
                         />
                         :
                         <ChildButton
-                            icon={<ExitToAppIcon style={{fontSize: 20}}/>}
+                            icon={<> <ExitToAppIcon style={{fontSize: 20}} /> Logout </>}
                             background="#fff"
                             size={40}
                             onClick={() => this.props.signOut()}
+                            className="icon-sizing"
                         />
                     }
                     {!auth.uid ?
                         <></>
                         :
                         <ChildButton
-                            icon={<AddIcon style={{fontSize: 20}}/>}
+                            icon={<> <AddIcon style={{fontSize: 20}}/> Project</>}
                             background="#fff"
                             size={40}
                             onClick={() => history.push('/addProject')}
+                            className="icon-sizing"
                         />
                     }
                 </FloatingMenu>

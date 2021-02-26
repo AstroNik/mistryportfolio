@@ -50,8 +50,15 @@
     z-index: 1020;
     margin-bottom: 95px;
     margin-right: 50px;
+    width: 100px;
 }
 
 .icon-color {
     color: white;
+}
+
+.icon-sizing {
+    width: 100px !important;
+    border-radius: 50px !important;
+    justify-content: space-evenly !important;
 }
