@@ -70,7 +70,10 @@ class SmallNav extends React.Component {
                             icon={<> <PersonIcon style={{fontSize: 20}}/> Login </>}
                             background="#fff"
                             size={40}
-                            onClick={() => history.push('/login')}
+                            onClick={() => {
+                                history.push('/login');
+                                this.setState({isOpen: false})
+                            }}
                             className="icon-sizing"
                         />
                         :
@@ -78,7 +81,10 @@ class SmallNav extends React.Component {
                             icon={<> <ExitToAppIcon style={{fontSize: 20}} /> Logout </>}
                             background="#fff"
                             size={40}
-                            onClick={() => this.props.signOut()}
+                            onClick={() => {
+                                this.props.signOut()
+                                this.setState({isOpen: false})
+                            }}
                             className="icon-sizing"
                         />
                     }
@@ -89,7 +95,10 @@ class SmallNav extends React.Component {
                             icon={<> <AddIcon style={{fontSize: 20}}/> Project</>}
                             background="#fff"
                             size={40}
-                            onClick={() => history.push('/addProject')}
+                            onClick={() => {
+                                history.push('/addProject')
+                                this.setState({isOpen: false})
+                            }}
                             className="icon-sizing"
                         />
                     }
