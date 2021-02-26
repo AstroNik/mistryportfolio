@@ -8,10 +8,36 @@ import PersonIcon from "@material-ui/icons/Person";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {withRouter} from "react-router-dom";
+import PropTypes from 'prop-types';
 
 class SmallNav extends React.Component {
-    state = {
-        isOpen: false
+    constructor(props) {
+        super(props);
+        this.state = {
+            isOpen: false
+        }
+        this.setWrapperRef = this.setWrapperRef.bind(this);
+        this.handleClickOutside = this.handleClickOutside.bind(this);
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+    }
+
+    setWrapperRef(node) {
+        this.wrapperRef = node;
+    }
+
+    handleClickOutside(event) {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target) && this.state.isOpen === true) {
+            this.setState({
+                isOpen: false
+            });
+        }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -25,7 +51,7 @@ class SmallNav extends React.Component {
     render() {
         const {auth, history} = this.props
         return (
-            <div className="nav-fix">
+            <div className="nav-fix" ref={this.setWrapperRef}>
                 <FloatingMenu
                     slideSpeed={500}
                     direction={Directions.Up}
@@ -72,6 +98,11 @@ class SmallNav extends React.Component {
         )
     }
 }
+
+SmallNav.propTypes = {
+    children: PropTypes.element.isRequired,
+};
+
 
 const mapStateToProps = (state) => {
     return {
