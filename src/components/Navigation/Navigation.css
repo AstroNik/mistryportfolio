@@ -12,10 +12,11 @@
     z-index: 1020;
 }
 
-.navigation a {
-    text-align: center;
-    vertical-align: middle;
-    line-height: 28px;
+.nav-links {
+    width: 25%;
+    margin: 0 auto;
+    justify-content: space-between;
+    display: flex;
 }
 
 .MuiSvgIcon-root {
@@ -24,7 +25,7 @@
 
 .MuiSvgIcon-root:hover {
     cursor: pointer;
-    color: black;
+    color: #FE6B8B;
 }
 
 .link-click {
@@ -34,13 +35,13 @@
 }
 
 .link-click:hover {
-    background: rgba(209, 209, 209, 0.3);
-    color: grey;
+    color: #FE6B8B;
     text-decoration: none;
+    opacity: 0.9;
 }
 
-.link-click:active {
-
+.link-active {
+    border-bottom: 3px solid #FE6B8B;
 }
 
 .nav-fix {
@@ -61,4 +62,26 @@
     width: 100px !important;
     border-radius: 50px !important;
     justify-content: space-evenly !important;
+}
+
+.inner {
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 998.9px) {
+    .nav-links {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 667px) {
+    .nav-links {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .nav-links {
+        width: 50%;
+    }
 }
