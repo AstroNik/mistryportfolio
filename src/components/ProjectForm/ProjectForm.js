@@ -40,24 +40,30 @@ class ProjectForm extends Component {
 
         formData.append("files", this.state.bannerImage[0]);
 
+        let fileCounter = 0;
         for (const i of Object.keys(this.state.files)) {
             formData.append("files", this.state.files[i]);
+            fileCounter++;
         }
 
-        if(this.state.tDFiles != null ) {
-            formData.append("files", this.state.tDFiles[0]);
+        let tDFileCounter = 0;
+        if (this.state.tDFiles != null) {
+            for (const i of Object.keys(this.state.tDFiles)) {
+                formData.append("files", this.state.tDFiles[i]);
+            }
+            tDFileCounter++;
         } else {
             formData.append("tDFiles", null);
         }
 
+        formData.append("fileCounter", fileCounter.toString());
+        formData.append("tDFileCounter", tDFileCounter.toString());
         formData.append("description", this.state.description);
         formData.append("tDBool", this.state.tDBool);
         formData.append("layout", this.state.layout);
 
 
         this.props.addProject(formData);
-
-        // this.props.history.push('/');
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -80,14 +86,14 @@ class ProjectForm extends Component {
                 document.getElementById("layout1").checked = true;
             }
         }
-        if(prevProps.status !== this.props.status){
+        if (prevProps.status !== this.props.status) {
             this.props.history.push('/');
         }
     }
 
     render() {
-        // const {auth} = this.props;
-        //
+        const {auth} = this.props;
+
         // if (!auth.uid) {
         //     return (
         //         <Redirect from="/addProject" to="/"/>
@@ -130,7 +136,8 @@ class ProjectForm extends Component {
                             <div className="custom-file">
                                 <input type="file" multiple="multiple" id="files"
                                        onChange={this.selectFiles} name="files" className="custom-file-input"/>
-                                <label className="custom-file-label overflow-hidden" htmlFor="files"> Upload Images / Videos of
+                                <label className="custom-file-label overflow-hidden" htmlFor="files"> Upload Images /
+                                    Videos of
                                     Project </label>
                             </div>
                         </div>
@@ -148,7 +155,7 @@ class ProjectForm extends Component {
                             <div className="form-check form-check-inline">
                                 <input type="radio" id="tDBoolFalse" name="tDBool" value={false}
                                        onChange={this.handleChange} className="form-check-input"/>
-                                <label htmlFor="3dBool" className="form-check-label"> I Have a 3D File </label>
+                                <label htmlFor="3dBool" className="form-check-label"> I Have 3D Files </label>
                             </div>
                         </div>
 
@@ -158,7 +165,7 @@ class ProjectForm extends Component {
                                 <input type="file" id="tDFiles" name="tDFiles" className="custom-file-input"
                                        disabled={this.state.dis}
                                        onChange={this.selectFiles} required={!this.state.dis}/>
-                                <label className="custom-file-label" htmlFor="tDFiles"> Upload STL File </label>
+                                <label className="custom-file-label" htmlFor="tDFiles"> Upload STL Files </label>
                             </div>
                         </div>
 
@@ -175,8 +182,25 @@ class ProjectForm extends Component {
                             <div className="form-check form-check-inline">
                                 <input type="radio" id="layout2" name="layout" value="2"
                                        className="form-check-input"
+                                       onChange={this.handleChange} />
+                                <label htmlFor="layout" className="form-check-label"> Layout With 3D
+                                    Interaction </label>
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input type="radio" id="layout3" name="layout" value="3"
+                                       className="form-check-input"
+                                       onChange={this.handleChange} />
+                                <label htmlFor="layout" className="form-check-label"> Layout With 3D
+                                    Interaction </label>
+                            </div>
+
+                            <div className="form-check form-check-inline">
+                                <input type="radio" id="layout4" name="layout" value="4"
+                                       className="form-check-input"
                                        onChange={this.handleChange} disabled={this.state.dis}/>
-                                <label htmlFor="layout" className="form-check-label"> Layout With 3D Interaction </label>
+                                <label htmlFor="layout" className="form-check-label"> Layout With 3D
+                                    Interaction </label>
                             </div>
                         </div>
 
