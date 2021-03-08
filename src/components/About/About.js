@@ -115,6 +115,7 @@ const About = () => {
                         <ImageGallery
                             items={images}
                             showPlayButton={false}
+                            showFullscreenButton={false}
                         />
                     </div>
                 </div>
