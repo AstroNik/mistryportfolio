@@ -8,7 +8,6 @@ import PersonIcon from "@material-ui/icons/Person";
 import AddIcon from "@material-ui/icons/Add";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import {withRouter} from "react-router-dom";
-import PropTypes from 'prop-types';
 
 class SmallNav extends React.Component {
     constructor(props) {
@@ -78,7 +77,7 @@ class SmallNav extends React.Component {
                         />
                         :
                         <ChildButton
-                            icon={<> <ExitToAppIcon style={{fontSize: 20}} /> Logout </>}
+                            icon={<> <ExitToAppIcon style={{fontSize: 20}}/> Logout </>}
                             background="#fff"
                             size={40}
                             onClick={() => {
@@ -107,11 +106,6 @@ class SmallNav extends React.Component {
         )
     }
 }
-
-SmallNav.propTypes = {
-    children: PropTypes.element.isRequired,
-};
-
 
 const mapStateToProps = (state) => {
     return {
