@@ -5,11 +5,17 @@
     height: 54px;
 }
 
-.cults {
-    filter: invert(54%) sepia(0%) saturate(0%) hue-rotate(1deg) brightness(93%) contrast(84%);
+.color-clip {
+    margin-top: 4px;
+    width: 20px;
+    height: 20px;
+    background-color: grey; /* defines the background color of the image */
+    mask: url("./cults.svg") no-repeat center / contain;
+    -webkit-mask: url("./cults.svg") no-repeat center / contain;
 }
 
-.cults:hover {
+.color-clip:hover {
     cursor: pointer;
-    filter: brightness(0%);
+    background: #FE6B8B;
 }
+
