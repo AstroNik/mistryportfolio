@@ -13,7 +13,7 @@
 }
 
 .nav-links {
-    width: 25%;
+    width: 20%;
     margin: 0 auto;
     justify-content: space-between;
     display: flex;
@@ -21,11 +21,6 @@
 
 .MuiSvgIcon-root {
     color: grey;
-}
-
-.MuiSvgIcon-root:hover {
-    cursor: pointer;
-    color: #FE6B8B;
 }
 
 .link-click {
@@ -62,6 +57,21 @@
     width: 100px !important;
     border-radius: 50px !important;
     justify-content: space-evenly !important;
+}
+
+.nav-fix  li:hover .MuiSvgIcon-root {
+    cursor: pointer;
+    color: #FE6B8B;
+}
+
+.nav-fix li:hover {
+    cursor: pointer;
+    color: #FE6B8B;
+}
+
+.MuiSvgIcon-root:hover {
+    cursor: pointer;
+    color: #FE6B8B;
 }
 
 .inner {
