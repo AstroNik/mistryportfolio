@@ -1,5 +1,5 @@
 .max-container {
-    height: calc(100vh - (50px + 56px + 28.25px));
+    height: calc(100vh - (50px + 56px + 26px));
     overflow-x: hidden;
     position: relative;
 }
